@@ -19,8 +19,8 @@ W trakcie zajęć osoba studencka pozna m.in. zagadnienia takie jak:
 ## 2. Oprogramowanie
 
 W trakcie zajęć do pracy niezbędne będzie posiadanie:
-* zainstalowanego interpretera **Pythona** w wersji 3.9 lub nowszej
-* **framework Django** w wersji 4.1.*
+* zainstalowanego interpretera **Pythona** w wersji 3.11 lub nowszej
+* **framework Django** w wersji 4.2.*
 * narzędzie IDE, preferowane **PyCharm Professional** (licencja studencka) lub wersja Community. Może to być również inne oprogramowanie ze wsparciem dla języka Python.
 * narzędzie Git do zarządzania kodem projektu
 * możliwe, że w zależności od konfiguracji projektu niezbędne będzie zainstalowanie i konfiguracja odpowiedniego serwera bazy danych
