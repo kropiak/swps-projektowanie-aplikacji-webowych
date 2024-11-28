@@ -316,3 +316,83 @@ Uruchom ponownie serwer i przejdź na widok listy wszystkich obiektów Person i 
 
 Może to oznaczać błąd w zdefiniowanej ścieżce.
 
+Teraz przygotujemy widok dla pojedynczego obiektu typu `Person`, którego defininicja będzie wymagała przekazywania przez adres URL wartości parametru `id`, dla którego konkretny obiekt `Person` zostanie pobrany z bazy danych.
+
+_**Listing 11**_  
+
+Zawartość pliku `template\person\detail.html`
+```html
+{% extends "myapp\base.html" %}
+
+{% block title %}{{ person.firstname }} {{ person.lastname }}{% endblock %}
+
+{% block content %}
+<p>Person: {{ person.firstname }} {{ person.lastname }}</p>
+<p>Rozmiar koszuli: {{ person.shirt_size }}</p>
+<p>Miesiąc dodania: {{ person.month_added }}</p>
+<p>Drużyna: {{ person.team.name }}</p>
+{% endblock %}
+```
+
+Teraz dodanie widoku w pliku `myapp\views.py`
+
+_**Listing 12**_
+```python
+def person_detail(request, id):
+    # pobieramy konkretny obiekt Person
+    person = Person.objects.get(id=id)
+
+    return render(request,
+                  "myapp/person/detail.html",
+                  {'person': person})
+```
+
+I dodajemy mapowanie URL na nowy widok w pliku `myapp\urls.py`
+
+_**Listing 13**_
+
+```python
+from django.urls import path
+
+from . import views
+
+urlpatterns = [
+    path("welcome", views.welcome_view),
+    path("persons", views.person_list),
+    path("person/<int:id>", views.person_detail),
+]
+```
+
+Definicja `"person/<int:id>"` oznacza, że adres pasujący do schematu `.../person/liczba_całkowita` będzie mapowany na widok `person_detail`. Jest to jeden ze sposobów przekazywania wartości parametrów do naszej aplikacji.
+
+Teraz w przeglądarce po wpisaniu adresu http://127.0.0.1:8000/myapp/person/1 powinniśmy zobaczyć widok dla obiektu typu `Person` o id=1 o ile istnieje w bazie. Jeżeli obiekt o podanym id nie znajduje się w bazie zgłoszony zostanie wyjątek `models.ModelNotFound`, który nieobsłuzony sposowduje dość brzydki widok na naszej stronie.
+
+![Error 404](404_example.png)
+
+Możemy temu zaradzić dodając obsługę takiej ewentualności. Zmodyfikowana postać widoku `person_detail`:
+_**Listing 14**_
+
+```python
+# dodajemy brakujący import na początku pliku (modyfikacja)
+from django.http import Http404, HttpResponse
+
+def person_detail(request, id):
+    # pobieramy konkretny obiekt Person
+    try:
+        person = Person.objects.get(id=id)
+    except Person.DoesNotExist:
+        raise Http404("Obiekt Person o podanym id nie istnieje")
+
+    return render(request,
+                  "myapp/person/detail.html",
+                  {'person': person})
+```
+A ten sam widok wygląda teraz nieco lepiej.
+
+![Self 404](404_self_message.png)
+
+**Ćwiczenia do samodzielnego wykonania**
+
+W ramach ćwiczeń do samodzielnego wykonania stwórz w ten sam sposób widoki dla obiektu `Team` czyli widok dla pojedynczego obiektu oraz listy tych obiektów.
+
+Dodatkowo w pliku `myapp.css` bazując na doświadczeniach z zajęć z poprzedniego semestru zdefiniuj style, które nadadzą stronie trochę inny widok.
