@@ -370,6 +370,7 @@ Teraz w przeglądarce po wpisaniu adresu http://127.0.0.1:8000/myapp/person/1 po
 ![Error 404](404_example.png)
 
 Możemy temu zaradzić dodając obsługę takiej ewentualności. Zmodyfikowana postać widoku `person_detail`:
+
 _**Listing 14**_
 
 ```python
@@ -393,6 +394,10 @@ A ten sam widok wygląda teraz nieco lepiej.
 
 **Ćwiczenia do samodzielnego wykonania**
 
+**Zadanie 1**
+
 W ramach ćwiczeń do samodzielnego wykonania stwórz w ten sam sposób widoki dla obiektu `Team` czyli widok dla pojedynczego obiektu oraz listy tych obiektów.
+
+**Zadanie 2**
 
 Dodatkowo w pliku `myapp.css` bazując na doświadczeniach z zajęć z poprzedniego semestru zdefiniuj style, które nadadzą stronie trochę inny widok.
