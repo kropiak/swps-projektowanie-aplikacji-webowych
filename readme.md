@@ -41,15 +41,34 @@ W trakcie zajęć do pracy niezbędne będzie posiadanie:
 
 ## 4. Wymagania projektu.
 
-Zakres projektu zaliczeniowego:
+**Projekt Django REST API**
+
 1.	**Modele**:
 * 4-5 adekwatnych do projektu modeli
+
 2.	**Uwierzytelnianie (preferowany token) i autoryzacja.**
 * Co najmniej 2 konta z różnym poziomem dostępu do endpointów (np. admin, user)
+
 3.	**Endpointy:**
-* Rejestracja użytkownika aplikacji
+* Rejestracja użytkownika aplikacji (opcjonalnie)
 * CRUD
 * Minimum 2 endpointy, które wyjdą poza schemat CRUD, np. zestawienie miesięczne zamówień, lista wypożyczeń dla użytkownika, lista towarów zaczynających się od itp.
+
+
+**Projekt Django + HTML + CSS**
+
+1.	**Modele**:
+* 4-5 adekwatnych do projektu modeli
+
+2. **Widoki**:
+* lista obiektów danego modelu (dla wszystkich dodanych modeli w models.py)
+* szczegóły dla danej instancji modelu (detail view)
+* z możliwością edycji obiektu oraz usunięcia obiektu
+* minimum 2 widoki dodatkowe: np. zestawienie zamówień za dany rok/miesiąc, lista produktów dla kategorii, postów danego użytkownika, itp.
+
+3. **Inne wymagania**:
+* dodany szablon strony (Django template)
+* dodany plik ze stylami (raczej prosty) do tego szablonu
 
 ## Kontakt do prowadzących
 - Krzysztof Ropiak ([kropiak@swps.edu.pl](mailto:kropiak@swps.edu.pl))
