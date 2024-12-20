@@ -196,11 +196,11 @@ Przykład poniżej.
 Plik `myapp/api_urls.py`
 ```python
 from django.urls import path, include
-from . import views
+from . import api_views
 
 urlpatterns = [
-    path('persons/', views.person_list),
-    path('persons/<int:pk>/', views.person_detail),
+    path('persons/', api_views.person_list),
+    path('persons/<int:pk>/', api_views.person_detail),
 ]
 ```
 
